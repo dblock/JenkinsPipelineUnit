@@ -230,4 +230,28 @@ class TestDeclarativePipeline extends DeclarativePipelineTest {
         printCallStack()
         assertJobStatusSuccess()
     }
+
+    @Test void should_run_capitalcase_file() throws Exception {
+        runScript('CapitalCase_Jenkinsfile.groovy')
+        printCallStack()
+        assertJobStatusSuccess()
+    }
+
+    @Test void should_run_lowercase_file() throws Exception {
+        runScript('lowercase_Jenkinsfile.groovy')
+        printCallStack()
+        assertJobStatusSuccess()
+    }
+
+    @Test void should_run_capitalcase_file_subfolder() throws Exception {
+        runScript('subfolder/CapitalCase_Jenkinsfile.groovy')
+        printCallStack()
+        assertJobStatusSuccess()
+    }
+
+    @Test void should_run_lowercase_file_subfolder() throws Exception {
+        runScript('subfolder/lowercase_Jenkinsfile.groovy')
+        printCallStack()
+        assertJobStatusSuccess()
+    }
 }
