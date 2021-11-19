@@ -1,0 +1,25 @@
+pipeline {
+    stages {
+        stage('Set variables') {
+            steps {
+                script {
+                    dockerImage = 'docker-image'
+                    dockerLabel = 'docker-label'
+                    dockerPull = true
+                }
+            }
+        }
+        stage('Use variables') {
+            agent {
+                docker {
+                    image dockerImage
+                    label dockerLabel
+                    alwaysPull dockerPull
+                }
+            }
+            steps {
+                echo "dockerImage=${dockerImage}, dockerLabel=${dockerLabel}, dockerPull=${dockerPull}"
+            }
+        }
+    }
+}
